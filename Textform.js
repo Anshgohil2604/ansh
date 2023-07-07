@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import  './Textform.css';
 export   const Textform =(props) => {
 
-  function Login(){
+
+  
   const [user,setUser] = useState({
     Email : "",
     Password : "",
@@ -15,11 +16,10 @@ export   const Textform =(props) => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
     
-    console.log(user);
-  };
+  //   console.log(user);
   return (
     <html>
     <head>
@@ -27,6 +27,9 @@ export   const Textform =(props) => {
     </head>
     <body>
     <section className="vh-50 gradient-custom">
+
+    <form onSubmit={handleChange}> 
+
   <div className="container py-5 h-75">
     <div className="row d-flex justify-content-center align-items-center h-50">
       <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -46,27 +49,27 @@ export   const Textform =(props) => {
           value={user.Email}
           onChange={handleChange}
         /> */}
-                    <form onSubmit={handleSubmit}>
 
 
  <div className="form-outline form-white mb-4">
-                <input type="Email" id="typeEmailX" name = "Email" value = {user.Email} onChange = {handleChange} className="form-control form-control-lg" />
+                <input type="Email" id="typeEmailX" name = "Email"  value = {user.Email} onChange = {handleChange} className="form-control form-control-lg" />
                 <label className="form-label" htmlFor="typeEmailX">Email</label>
               </div>   
 
               <div className="form-outline form-white mb-4">
-                <input type="password" id="typePasswordX" value = {user.Password} onChange = {handleChange} className="form-control form-control-lg" />
+                <input type="Password" id="typePasswordX" name = "Password" value = {user.Password} onChange = {handleChange} className="form-control form-control-lg" />
                 <label className="form-label" htmlFor="typePasswordX">Password</label>
               </div>
 
               <div className="small mb-1 pb-lg-1"><a className="text-white-50" href="#!">Forgot password?</a></div>
-              <button className="btn btn-outline-light btn-lg px-5" > <a href="home"  type="submit">Login</a></button>
+              <button className ="btn btn-outline-light btn-lg px-5" href="#!"  type="submit">Login</button>
+
+              {/* <button className="btn btn-outline-light btn-lg px-5" > <a href="home"  type="submit">Login</a></button> */}
              <div className="d-flex justify-content-center text-center mt-2 pt-0">
                 {/* <a href="#!" className="text-white"><i className="fab fa-facebook-f fa-lg"></i></a>
                 <a href="#!" className="text-white"><i className="fab fa-twitter fa-lg mx-4 px-2"></i></a>
                 <a href="#!" className="text-white"><i className="fab fa-google fa-lg"></i></a> */}
               </div>
-              </form>
 
             </div>
 
@@ -80,6 +83,7 @@ export   const Textform =(props) => {
       </div>
     </div>
   </div>
+  </form>
 
 </section>
 
@@ -87,4 +91,5 @@ export   const Textform =(props) => {
     </html>
     
   )}
-              }
+                   
+              
