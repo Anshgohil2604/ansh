@@ -90,6 +90,4 @@ export   const Textform =(props) => {
     </body>
     </html>
     
-  )}
-                   
-              
+  )}            
