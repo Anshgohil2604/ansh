@@ -5,14 +5,22 @@ import  './Signup.css';
 export const  Signup = () => { 
 
   const [user,setUser] = useState({
-    Name :"",
+    Name : "",
     Mobile : "",
     Email : "",
     Password : "",
-    
   });
-  
-const getUserData = () => {};
+  const handleChange = (event) => {
+    const { name , value } = event.target;
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
+  };
+ // const handleSubmit = (event) => {
+  //   event.preventDefault();
+    
+  //   console.log(user);
   
   return (
     <html>
@@ -31,25 +39,27 @@ const getUserData = () => {};
 
               <h2 className ="fw-bold mb-2 text-uppercase">Signup</h2>
               <p className ="text-white-50 mb-5">Please enter your login and password!</p>
+              
+              <form onSubmit={handleChange}> 
 
               <div className ="form-outline form-white mb-1">
-                <input type="Name" id="String"  value = {user.name} onChange = {getUserData} className ="form-control form-control-lg" />
-                <label className ="form-label" htmlFor="typeName">Name</label>
+                <input type="Name" id="typeNameX"  value = {user.name} onChange = {handleChange} className ="form-control form-control-lg" />
+                <label className ="form-label" htmlFor="typeNameX">Name</label>
               </div>
 
               <div className ="form-outline form-white mb-3">
-                <input type="float" id="String" value = {user.mobile} onChange = {getUserData} className ="form-control form-control-lg" />
-                <label className ="form-label" htmlFor="int">Mobile</label>
+                <input type="Mobile" id="typeMobileX" value = {user.mobile} onChange = {handleChange} className ="form-control form-control-lg" />
+                <label className ="form-label" htmlFor="typeNameX">Mobile</label>
               </div>
 
 
               <div className ="form-outline form-white mb-3">
-                <input type="email" id="typeEmailX" value = {user.email} onChange = {getUserData} className ="form-control form-control-lg" />
+                <input type="email" id="typeEmailX" value = {user.email} onChange = {handleChange} className ="form-control form-control-lg" />
                 <label className ="form-label" htmlFor="typeEmailX">Email</label>
               </div>
 
               <div className ="form-outline form-white mb-3">
-                <input type="password" id="typePassword" value = {user.password}  onChange = {getUserData} className ="form-control form-control-lg" />
+                <input type="password" id="typePassword" value = {user.password}  onChange = {handleChange} className ="form-control form-control-lg" />
                 <label className ="form-label" htmlFor="typePasswordX">Password</label>
               </div>
               <p className ="small mb-5 pb-lg-2"><a className ="text-white-50" href="#!">Forgot password?</a></p>
@@ -57,15 +67,16 @@ const getUserData = () => {};
               <button className ="btn btn-outline-light btn-lg px-5" href="home"  type="submit">Signup</button>
 
               <div className ="d-flex justify-content-center text-center mt-2 pt-1">
-                <a href="#!" className ="text-white"><i className ="fab fa-facebook-f fa-lg"></i></a>
+                {/* <a href="#!" className ="text-white"><i className ="fab fa-facebook-f fa-lg"></i></a>
                 <a href="#!" className ="text-white"><i className ="fab fa-twitter fa-lg mx-2 px-2"></i></a>
-                <a href="#!" className ="text-white"><i className ="fab fa-google fa-lg"></i></a>
+                <a href="#!" className ="text-white"><i className ="fab fa-google fa-lg"></i></a> */}
               </div>
+              </form>
 
             </div>
 
             <div>
-              <p className ="mb-0">Have registered Registered <a href="Textform" className ="text-white-50 fw-bold">Login</a>
+              <p className ="mb-0">Have Registered Already  <a href="Textform" className ="text-white-50 fw-bold">Login</a>
               </p>
             </div>
 
