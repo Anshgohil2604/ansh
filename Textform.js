@@ -1,21 +1,32 @@
 import React,{useState} from 'react'
 import  './Textform.css';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 export   const Textform =(props) => {
-
-
-  
-  const [user,setUser] = useState({
+ const [user,setUser] = useState({
     Email : "",
     Password : "",
   });
-  const handleChange = (event) => {
-    const { name , value } = event.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    const auth = getAuth();
+    const { Email, Password } = user;
+  
+    signInWithEmailAndPassword(auth, Email, Password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  
+    console.log(user);
   };
-
+  
   // const handleSubmit = (event) => {
   //   event.preventDefault();
     
@@ -28,7 +39,7 @@ export   const Textform =(props) => {
     <body>
     <section className="vh-50 gradient-custom">
 
-    <form onSubmit={handleChange}> 
+    <form onSubmit={handleSubmit}> 
 
   <div className="container py-5 h-75">
     <div className="row d-flex justify-content-center align-items-center h-50">
@@ -41,23 +52,14 @@ export   const Textform =(props) => {
               <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
               <p className="text-white-50 mb-5">Please enter your login and password!</p>
 
-             
-
-              {/* <input
-          type="email"
-          name="Email"
-          value={user.Email}
-          onChange={handleChange}
-        /> */}
-
-
+        
  <div className="form-outline form-white mb-4">
-                <input type="Email" id="typeEmailX" name = "Email"  value = {user.Email} onChange = {handleChange} className="form-control form-control-lg" />
+                <input type="Email" id="typeEmailX" name = "Email"  value = {user.Email} onChange = {handleSubmit} className="form-control form-control-lg" />
                 <label className="form-label" htmlFor="typeEmailX">Email</label>
               </div>   
 
               <div className="form-outline form-white mb-4">
-                <input type="Password" id="typePasswordX" name = "Password" value = {user.Password} onChange = {handleChange} className="form-control form-control-lg" />
+                <input type="Password" id="typePasswordX" name = "Password" value = {user.Password} onChange = {handleSubmit} className="form-control form-control-lg" />
                 <label className="form-label" htmlFor="typePasswordX">Password</label>
               </div>
 
@@ -90,4 +92,4 @@ export   const Textform =(props) => {
     </body>
     </html>
     
-  )}            
+  )}
